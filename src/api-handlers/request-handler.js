@@ -53,18 +53,21 @@ export default function request_caller({
       contentType = "multipart/form-data";
     }
 
+    
+
     const req_obj = {
       method: method,
       url: API_URL + endpoint,
       data: method !== "get" ? data : {}, //Send request body if method is not get
       params: method === "get" ? data : params,
       responseType: "json", //Response Type must be JSON
-      withCredentials: true,
       crossDomain: true,
       headers: {
         "Content-Type": contentType,
       },
     };
+
+    console.log(req_obj);
     //Common function to call the axios request, will require for the Conditional calling of the request
     function axios_req() {
       axios

@@ -36,9 +36,8 @@ export default function Secret() {
   }, []);
 
   const renderPublicRooms = () => {
-    return publicRooms?.rooms?.map((room) => {
+    return publicRooms?.map((room) => {
       const timeFromNow = moment(room.createdAt).fromNow();
-      console.log(room);
       return (
         <ProfileCard
           roomid={room.roomid}
@@ -52,14 +51,14 @@ export default function Secret() {
   };
 
   return (
-    <div className="pt-6">
+    <div className="pt-6  min-h-[30%] h-full w-full">
       <Typography type="section-heading" className="font-bold">
         Public Rooms
       </Typography>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="mt-2 space-y-2 overflow-y-auto max-h-60 scrollbar-hide">
+        <div className="mt-2 space-y-2  h-full  overflow-y-auto scrollbar-hide">
           {publicRooms?.length === 0 ? (
             <Typography type="section-description" className="text-center">
               Oopss, We don't have public rooms for now please create some
@@ -69,17 +68,6 @@ export default function Secret() {
           )}
         </div>
       )}
-      {/* {loading === "rejected" && (
-        <Typography
-          type="section-description"
-          className="text-center text-red-500"
-        >
-          Error loading public rooms: {error}
-        </Typography>
-      )}
-      {loading === "fulfilled" && (
-        
-      )} */}
     </div>
   );
 }

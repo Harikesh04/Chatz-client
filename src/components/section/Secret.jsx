@@ -54,15 +54,15 @@ export default function Secret() {
   };
 
   return (
-    <div className="pt-6">
+    <div className="pt-6 max-h-[50%] w-full ">
       <Typography type="section-heading" className="font-bold">
         Secret Rooms
       </Typography>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="mt-2 space-y-2 overflow-y-auto max-h-60 scrollbar-hide">
-          {privateRooms?.rooms?.length === 0 ? (
+        <div className="mt-2 h-full  space-y-2  overflow-y-auto  scrollbar-hide">
+          {privateRooms?.length === 0 ? (
             <Typography type="section-description" className="text-center">
               Shh! its secret, create your's
             </Typography>

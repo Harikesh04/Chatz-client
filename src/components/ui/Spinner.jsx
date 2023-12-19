@@ -1,8 +1,8 @@
 import { ClipLoader } from "react-spinners";
 
-const Spinner = () => {
+const Spinner = ({className}) => {
   return (
-    <div className="flex justify-center w-full">
+    <div className={`flex justify-center w-full ${className}`}>
       <ClipLoader />
     </div>
   );

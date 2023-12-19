@@ -10,17 +10,20 @@ import { useSelector } from "react-redux";
 const Dashboard = () => {
   const userProfile = useSelector((state) => state.auth.profile);
 
-  
   return (
-    <Wrapper className="relative px-2 bg-white ">
+    <Wrapper className="relative px-2 h-full w-full bg-white ">
       <Header />
       <Typography type="caption" className="mt-4">
         Hello{" "}
         <span className="font-bold text-gray-700">{userProfile?.name}</span> ,
         You Have Entered the best secure chatting app in the Entire World.
       </Typography>
-      <Secret />
-      <Public />
+
+      <div className="h-[70vh] flex gap-5   flex-col ">
+        <Secret />
+        <Public />
+      </div>
+
       <Footer />
     </Wrapper>
   );

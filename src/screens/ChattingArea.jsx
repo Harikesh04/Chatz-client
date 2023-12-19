@@ -9,7 +9,6 @@ export default function ChattingArea({ roomid }) {
   const chatRef = useRef();
 
   const renderChats = () => {
-    console.log(chats);
     return chats.map((msg, index) => {
       if (msg.data.roomid !== roomid) return null;
       if (msg.type === "recieved") {

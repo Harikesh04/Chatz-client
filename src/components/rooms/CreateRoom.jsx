@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useMemo } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import request_caller from "../../api-handlers/request-handler.js";
 import url_handlers from "../../api-handlers/url-handlers.js";
 import {
   addPrivateRoom,
@@ -14,15 +15,16 @@ import {
 
 export default function CreateRoom({ setvalue }) {
   const id = useMemo(() => uuidv4(), []);
+  const [loading, setLoading] = useState(false);
 
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const [publicRoomType, setPublicRoomType] = useState(true);
 
-  console.log("rendering...");
 
   const CreateRoomHandler = async () => {
+    setLoading(true);
     const roomid = id;
     const owner = user.profile.googleId;
     const type = publicRoomType ? "public" : "private";
@@ -54,6 +56,7 @@ export default function CreateRoom({ setvalue }) {
       })
       .finally(() => {
         setLoading(false);
+        setvalue(false);
       });
   };
 
@@ -79,7 +82,7 @@ export default function CreateRoom({ setvalue }) {
         </TextRadio>
       </div>
       <div className="float-right space-x-2">
-        <Button onClick={CreateRoomHandler} btnType="primary" className="mt-2">
+        <Button onClick={CreateRoomHandler} loading={loading} btnType="primary" className="mt-2">
           Submit
         </Button>
         <Button onClick={() => setvalue(false)} btnType="danger">

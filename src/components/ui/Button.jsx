@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
 import { buttonVariants } from "../framer-motion/variants.jsx";
-export default function Button({ btnType, className, children, ...props }) {
+
+export default function Button({
+  btnType,
+  loading = false,
+  className,
+  children,
+  ...props
+}) {
   switch (btnType) {
     case "primary": {
       return (
@@ -9,10 +16,11 @@ export default function Button({ btnType, className, children, ...props }) {
           initial="hidden"
           animate="visible"
           whileTap="whileTap"
+          disabled={loading}
           {...props}
           className={`py-2 px-6 bg-blue-500 text-white text-base font-medium rounded-md ${className}`}
         >
-          {children}
+          {loading ? "Loading..." : children}
         </motion.button>
       );
     }
@@ -23,10 +31,11 @@ export default function Button({ btnType, className, children, ...props }) {
           initial="hidden"
           animate="visible"
           whileTap="whileTap"
+          disabled={loading}
           {...props}
           className={`py-2 px-6 bg-blue-800 text-white text-base font-medium rounded-md ${className}`}
         >
-          {children}
+          {loading ? "Loading..." : children}
         </motion.button>
       );
     }
@@ -38,9 +47,10 @@ export default function Button({ btnType, className, children, ...props }) {
           initial="hidden"
           animate="visible"
           whileTap="whileTap"
+          disabled={loading}
           className={`py-2 px-6 bg-red-500 text-white text-base font-medium rounded-md ${className}`}
         >
-          {children}
+          {loading ? "Loading..." : children}
         </motion.button>
       );
     }
@@ -51,10 +61,11 @@ export default function Button({ btnType, className, children, ...props }) {
           initial="hidden"
           animate="visible"
           whileTap="whileTap"
+          disabled={loading}
           {...props}
           className={`${className}`}
         >
-          {children}
+          {loading ? "Loading..." : children}
         </motion.button>
       );
     }
