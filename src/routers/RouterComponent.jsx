@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { lazy} from "react";
 import {
   BrowserRouter as Router,
   Navigate,
