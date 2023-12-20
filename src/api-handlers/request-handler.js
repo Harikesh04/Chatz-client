@@ -53,8 +53,6 @@ export default function request_caller({
       contentType = "multipart/form-data";
     }
 
-    
-
     const req_obj = {
       method: method,
       url: API_URL + endpoint,

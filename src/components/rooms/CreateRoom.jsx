@@ -22,7 +22,6 @@ export default function CreateRoom({ setvalue }) {
 
   const [publicRoomType, setPublicRoomType] = useState(true);
 
-
   const CreateRoomHandler = async () => {
     setLoading(true);
     const roomid = id;
@@ -82,7 +81,12 @@ export default function CreateRoom({ setvalue }) {
         </TextRadio>
       </div>
       <div className="float-right space-x-2">
-        <Button onClick={CreateRoomHandler} loading={loading} btnType="primary" className="mt-2">
+        <Button
+          onClick={CreateRoomHandler}
+          loading={loading}
+          btnType="primary"
+          className="mt-2"
+        >
           Submit
         </Button>
         <Button onClick={() => setvalue(false)} btnType="danger">

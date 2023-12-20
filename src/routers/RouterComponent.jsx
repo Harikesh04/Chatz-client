@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Navigate,
@@ -8,18 +8,24 @@ import {
 import Home from "../screens/Home.jsx";
 import Dashboard from "../screens/Dashboard.jsx";
 import ChatRoom from "../screens/ChatRoom.jsx";
-import { ProtectedRoute } from "../routers/ProtectedRoute.jsx";
+import { ProtectedRoute } from "./ProtectedRoute.jsx";
 
-const RouterComponent = () => {
+const RouterComponent = ({ isAuthenticated }) => {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route element={<ProtectedRoute />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/room/:id" element={<ChatRoom />} />
-          </Route>
+          {isAuthenticated && (
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          )}
+
+          <Route path="/" element={<Home />} />
+
+          {/* Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/room/:id" element={<ChatRoom />} />
+        </Route>
         </Routes>
       </Router>
     </>

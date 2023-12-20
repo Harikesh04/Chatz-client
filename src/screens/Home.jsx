@@ -7,8 +7,6 @@ import { homeData } from "../dummy/data";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  
-
   return (
     <Wrapper>
       <div className="flex flex-col items-center justify-center h-full px-2 bg-gray-100">

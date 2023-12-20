@@ -13,9 +13,9 @@ const Dashboard = () => {
   return (
     <Wrapper className="relative px-2 h-full w-full bg-white ">
       <Header />
-      <Typography type="caption" className="mt-4">
+      <Typography type="caption" className="mt-4 2xl:text-lg">
         Hello{" "}
-        <span className="font-bold text-gray-700">{userProfile?.name}</span> ,
+        <span className="font-bold  text-gray-700">{userProfile?.name}</span> ,
         You Have Entered the best secure chatting app in the Entire World.
       </Typography>
 
