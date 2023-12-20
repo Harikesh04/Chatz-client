@@ -1,5 +1,3 @@
-import React from "react";
-
 import Typography from "../ui/Typography";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";

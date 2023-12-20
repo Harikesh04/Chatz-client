@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchLocalStorage } from "../../Helper/util"; // Import your local storage fetch function
 
 const authSlice = createSlice({
   name: "auth",

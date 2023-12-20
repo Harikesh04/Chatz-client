@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Wrapper from "../Components/layouts/Wrapper.jsx";
 import SwiperSection from "../Components/Swiper/SwiperSection.jsx";
 import Button from "../Components/ui/Button.jsx";

@@ -22,10 +22,10 @@ const RouterComponent = ({ isAuthenticated }) => {
           <Route path="/" element={<Home />} />
 
           {/* Protected Routes */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/room/:id" element={<ChatRoom />} />
-        </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/room/:id" element={<ChatRoom />} />
+          </Route>
         </Routes>
       </Router>
     </>

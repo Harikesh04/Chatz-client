@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import JoinSecretRoom from "../rooms/JoinSecretRoom.jsx";
 import CreateRoom from "../rooms/CreateRoom.jsx";
 import { AnimatePresence, motion } from "framer-motion";
