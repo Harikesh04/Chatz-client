@@ -25,7 +25,6 @@ const ChatRoom = () => {
   useEffect(() => {
     const socketTEMP = socketio(API_DEV_HOST);
     setSocket(socketTEMP);
-    console.log(true);
   }, []);
 
   useEffect(() => {

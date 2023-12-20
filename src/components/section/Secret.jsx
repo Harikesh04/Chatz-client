@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPrivateRooms } from "../../store/features/roomSlice.jsx";
 import url_handlers from "../../api-handlers/url-handlers.js";
 import request_caller from "../../api-handlers/request-handler.js";
+import { toast } from "react-hot-toast";
 
 export default function Secret() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [dataFetched, setDataFetched] = useState(false);
   const profile = useSelector((state) => state.auth.profile);
   const privateRooms = useSelector((state) => state.rooms.private);
 
@@ -26,21 +28,23 @@ export default function Secret() {
         }
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error("Something went wrong!");
       })
       .finally(() => {
         setLoading(false);
+        setDataFetched(true);
       });
   }
 
   useEffect(() => {
-    fetchPrivateRooms();
+    if (!dataFetched && (!privateRooms || privateRooms.length === 0)) {
+      fetchPrivateRooms();
+    }
   }, []);
 
   const renderSecretRooms = () => {
     return privateRooms.map((room) => {
       const timeFromNow = moment(room.createdAt).fromNow();
-      console.log(room);
       return (
         <ProfileCard
           roomid={room.roomid}

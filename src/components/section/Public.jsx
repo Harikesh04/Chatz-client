@@ -7,10 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import request_caller from "../../api-handlers/request-handler.js";
 import url_handlers from "../../api-handlers/url-handlers.js";
 import { setPublicRooms } from "../../store/features/roomSlice.jsx";
+import { toast } from "react-hot-toast";
+
 
 export default function Secret() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [dataFetched, setDataFetched] = useState(false);
 
   const publicRooms = useSelector((state) => state.rooms.public);
 
@@ -24,15 +27,20 @@ export default function Secret() {
       })
 
       .catch((err) => {
-        console.log(err.message);
+        toast.error("Something went wrong!");
       })
       .finally(() => {
         setLoading(false);
+        setDataFetched(true);
       });
   }
 
   useEffect(() => {
-    fetchPublicRooms();
+    if (!dataFetched && (!publicRooms || publicRooms.length === 0)) {
+      fetchPublicRooms();
+
+    }
+    
   }, []);
 
   const renderPublicRooms = () => {

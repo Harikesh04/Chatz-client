@@ -65,7 +65,6 @@ export default function request_caller({
       },
     };
 
-    console.log(req_obj);
     //Common function to call the axios request, will require for the Conditional calling of the request
     function axios_req() {
       axios

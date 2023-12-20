@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Button from "../Components/ui/Button";
 import { login } from "../store/features/authSlice";
+import { toast } from "react-hot-toast";
+
 
 export default function GoogleOAuth({ ...props }) {
   const dispatch = useDispatch();
@@ -24,6 +26,8 @@ export default function GoogleOAuth({ ...props }) {
     const profile = { ...res.profileObj };
 
     dispatch(login(profile));
+    toast.success("Logged in successfully!");
+    
 
     navigate("/dashboard");
   };

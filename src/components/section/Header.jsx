@@ -2,13 +2,16 @@ import Button from "../ui/Button";
 import Typography from "../ui/Typography";
 import { logout } from "../../store/features/authSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const HandleLogout = () => {
     localStorage.removeItem("googleLogin");
     dispatch(logout());
+    navigate("/");
   };
   return (
     <>

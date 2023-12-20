@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import request_caller from "../../api-handlers/request-handler.js";
 import url_handlers from "../../api-handlers/url-handlers.js";
+import { toast } from "react-hot-toast";
 import {
   addPrivateRoom,
   addPublicRoom,
@@ -48,10 +49,11 @@ export default function CreateRoom({ setvalue }) {
           {
             !publicRoomType && dispatch(addPrivateRoom(res.data));
           }
+          toast.success("🚀 Hooray! Your room has been created successfully!");
         }
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error("Something went wrong!");
       })
       .finally(() => {
         setLoading(false);

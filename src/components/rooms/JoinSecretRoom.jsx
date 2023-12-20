@@ -14,6 +14,9 @@ export default function JoinSecretRoom({ setvalue }) {
       toast.error("Please enter a secret code!");
 
       return;
+    } else if (secretCode.trim().length < 16) {
+      toast.error("Please enter a correct secret code!");
+      return;
     }
     navigate(`/room/${secretCode}`);
   };

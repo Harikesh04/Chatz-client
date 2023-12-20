@@ -4,17 +4,19 @@ import { useDispatch } from "react-redux";
 import { fetchLocalStorage } from "./Helper/util.jsx";
 import { login } from "./store/features/authSlice.jsx";
 import Spinner from "./Components/ui/Spinner.jsx";
+import { useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   useEffect(() => {
     const user = fetchLocalStorage();
-    setIsAuthenticated(Boolean(user?.googleId));
-    dispatch(login(user));
+    const googleId = user?.googleId;
+
+    if (googleId) {
+      dispatch(login(user));
+    }
     setLoading(false);
   }, []);
 
@@ -25,7 +27,7 @@ function App() {
           <Spinner />
         </div>
       ) : (
-        <RouterComponent isAuthenticated={isAuthenticated} />
+        <RouterComponent />
       )}
     </>
   );

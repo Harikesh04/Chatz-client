@@ -9,8 +9,12 @@ import Home from "../screens/Home.jsx";
 import Dashboard from "../screens/Dashboard.jsx";
 import ChatRoom from "../screens/ChatRoom.jsx";
 import { ProtectedRoute } from "./ProtectedRoute.jsx";
+import { useSelector } from "react-redux";
 
-const RouterComponent = ({ isAuthenticated }) => {
+const RouterComponent = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+
   return (
     <>
       <Router>
